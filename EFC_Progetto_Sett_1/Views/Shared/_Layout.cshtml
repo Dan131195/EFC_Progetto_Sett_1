@@ -23,19 +23,16 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-dark" asp-controller="Trasgressore" asp-action="Index">Anagrafe Trasgressori</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" href="@Url.Action("Index", "Trasgressore")">Anagrafe Trasgressori</a>
+                            <a class="nav-link" asp-controller="Violazione" asp-action="Index">Elenco Violazioni</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="@Url.Action("Index", "Violazione")">Elenco Violazioni</a>
+                            <a class="nav-link" asp-controller="Verbale" asp-action="Index">Compilazione Verbale</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="@Url.Action("Create", "Verbale")">Compilazione Verbale</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="@Url.Action("Index", "Report")">Report</a>
+                            <a class="nav-link" asp-controller="Report" asp-action="Index">Report</a>
                         </li>
                     </ul>
                 </div>
@@ -50,7 +47,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2025 - EFC_Progetto_Sett_1 - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2025 - EFC_Progetto_Sett_1 - <a asp-area="" asp-controller="Home" asp-action="Index">Home</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

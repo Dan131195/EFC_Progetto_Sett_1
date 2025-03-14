@@ -19,11 +19,5 @@ namespace EFC_Progetto_Sett_1.Controllers
         {
             return View();
         }
-
-        public IActionResult Statistiche()
-        {
-            var trasgressori = _context.Trasgressori.Include(t => t.Verbali).ToList();
-            return View(trasgressori);
-        }
     }
 }

@@ -16,6 +16,15 @@ namespace EFC_Progetto_Sett_1.Controllers
             _context = context;
         }
 
+        public IActionResult Index()
+        {
+            var verbali = _context.Verbali
+                                  .Include(v => v.Trasgressore)
+                                  .Include(v => v.Violazione)
+                                  .ToList();
+            return View(verbali);
+        }
+
         public IActionResult Create()
         {
             ViewData["Trasgressori"] = new SelectList(_context.Trasgressori, "Id", "Nome");
