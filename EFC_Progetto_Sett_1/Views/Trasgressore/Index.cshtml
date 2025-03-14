@@ -1,13 +1,29 @@
-﻿@model List<TrasgressoreViewModel>
+﻿@model List<Trasgressore>
 
-<div>
-	@foreach (var violazione in Model)
-	{
-		<div class="row">
-			<div class="col-md-4">@violazione.Nome</div>
-			<div class="col-md-4">@violazione.Cognome</div>
-			<div class="col-md-4">@violazione.Indirizzo</div>
-		</div>
-	}
-	<a class="nav-link text-dark" href="@Url.Action("Create", "Trasgressore")">Anagrafe Trasgressori</a>
-</div>
+<h2>Lista Trasgressori</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Cognome</th>
+            <th>Indirizzo</th>
+            <th>Telefono</th>
+            <th>Data Registrazione</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var trasgressore in Model)
+        {
+            <tr>
+                <td>@trasgressore.Nome</td>
+                <td>@trasgressore.Cognome</td>
+                <td>@trasgressore.Indirizzo</td>
+                <td>@trasgressore.Telefono</td>
+                <td>@trasgressore.DataRegistrazione.ToString("dd/MM/yyyy")</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-controller="Trasgressore" asp-action="Create" class="btn btn-primary">Aggiungi Trasgressore</a>

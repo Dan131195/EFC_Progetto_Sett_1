@@ -1,5 +1,6 @@
 ﻿using EFC_Progetto_Sett_1.Data;
 using EFC_Progetto_Sett_1.Models;
+using EFC_Progetto_Sett_1.Services;
 using EFC_Progetto_Sett_1.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -8,17 +9,17 @@ namespace EFC_Progetto_Sett_1.Controllers
 {
     public class TrasgressoreController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private readonly TrasgressoreService _trasgressoreService; // Usa il servizio invece di _context
 
         public TrasgressoreController(ApplicationDbContext context)
         {
-            _context = context;
+            _trasgressoreService = new TrasgressoreService(context); // Inizializza il servizio con il contesto
         }
 
         public IActionResult Index()
         {
-
-            return View();
+            var trasgressori = _trasgressoreService.GetAllTrasgressori(); // Recupera i trasgressori dal servizio
+            return View(trasgressori); // Passa la lista alla vista
         }
 
         public IActionResult Create()
@@ -40,9 +41,8 @@ namespace EFC_Progetto_Sett_1.Controllers
                     DataRegistrazione = DateTime.Now
                 };
 
-                _context.Trasgressori.Add(trasgressore);
-                _context.SaveChanges();
-                return RedirectToAction("Index", "Home");
+                _trasgressoreService.AddTrasgressore(trasgressore); // Usa il servizio per aggiungere il trasgressore
+                return RedirectToAction("Index"); // Torna alla lista
             }
             return View(model);
         }
