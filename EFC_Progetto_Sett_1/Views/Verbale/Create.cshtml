@@ -1,0 +1,42 @@
+﻿@model VerbaleViewModel
+
+@{
+    ViewData["Title"] = "Compilazione Verbale";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label for="TrasgressoreId">Trasgressore</label>
+        <select class="form-control" id="TrasgressoreId" name="TrasgressoreId">
+            @foreach (var item in (SelectList)ViewData["Trasgressori"])
+            {
+                <option value="@item.Value">@item.Text</option>
+            }
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="ViolazioneId">Violazione</label>
+        <select class="form-control" id="ViolazioneId" name="ViolazioneId">
+            @foreach (var item in (SelectList)ViewData["Violazioni"])
+            {
+                <option value="@item.Value">@item.Text</option>
+            }
+        </select>
+    </div>
+    <div class="form-group">
+        <label asp-for="DataViolazione">Data Violazione</label>
+        <input asp-for="DataViolazione" class="form-control" type="date" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Importo">Importo</label>
+        <input asp-for="Importo" class="form-control" type="number" step="0.01" />
+    </div>
+    <div class="form-group">
+        <label asp-for="PuntiDecurtati">Punti Decurtati</label>
+        <input asp-for="PuntiDecurtati" class="form-control" type="number" />
+    </div>
+    <button type="submit" class="btn btn-primary">Salva</button>
+    <a class="btn btn-secondary" href="@Url.Action("Index", "Home")">Home</a>
+</form>

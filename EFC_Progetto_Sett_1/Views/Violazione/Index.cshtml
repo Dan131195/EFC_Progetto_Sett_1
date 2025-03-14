@@ -1,0 +1,28 @@
+﻿@model IEnumerable<Violazione>
+
+@{
+    ViewData["Title"] = "Elenco Violazioni";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Descrizione</th>
+            <th>Punti Decurtati</th>
+            <th>Importo</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var violazione in Model)
+        {
+            <tr>
+                <td>@violazione.Descrizione</td>
+                <td>@violazione.PuntiDecurtati</td>
+                <td>@violazione.Importo</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a class="btn btn-secondary" href="@Url.Action("Index", "Home")">Home</a>

@@ -1,0 +1,13 @@
+﻿@model List<TrasgressoreViewModel>
+
+<div>
+	@foreach (var violazione in Model)
+	{
+		<div class="row">
+			<div class="col-md-4">@violazione.Nome</div>
+			<div class="col-md-4">@violazione.Cognome</div>
+			<div class="col-md-4">@violazione.Indirizzo</div>
+		</div>
+	}
+	<a class="nav-link text-dark" href="@Url.Action("Create", "Trasgressore")">Anagrafe Trasgressori</a>
+</div>

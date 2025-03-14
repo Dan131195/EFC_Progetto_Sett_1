@@ -1,0 +1,89 @@
+﻿@model ReportViewModel
+
+@{
+    ViewData["Title"] = "Report Completo";
+}
+
+<h2 class="mb-4">@ViewData["Title"]</h2>
+
+<!-- Sezione 1 -->
+<div class="mb-5">
+    <h3>Verbali e Punti Decurtati per Trasgressore</h3>
+    <table class="table table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th>Trasgressore</th>
+                <th>Numero di Verbali</th>
+                <th>Punti Totali Decurtati</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var t in Model.Trasgressori)
+            {
+                <tr>
+                    <td>@t.Nome @t.Cognome</td>
+                    <td>@(t.Verbali != null ? t.Verbali.Count() : 0)</td>
+                    <td>@(t.Verbali != null ? t.Verbali.Sum(v => v.PuntiDecurtati) : 0)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<!-- Sezione 2 -->
+<div class="mb-5">
+    <h3>Violazioni con più di 10 punti</h3>
+    <table class="table table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th>Importo</th>
+                <th>Cognome</th>
+                <th>Nome</th>
+                <th>Data Violazione</th>
+                <th>Punti Decurtati</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var v in Model.VerbaliHighPoints)
+            {
+                <tr>
+                    <td>@v.Importo</td>
+                    <td>@v.Trasgressore.Cognome</td>
+                    <td>@v.Trasgressore.Nome</td>
+                    <td>@v.DataViolazione.ToShortDateString()</td>
+                    <td>@v.PuntiDecurtati</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<!-- Sezione 3 -->
+<div class="mb-5">
+    <h3>Violazioni con importo maggiore di 400€</h3>
+    <table class="table table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th>Importo</th>
+                <th>Cognome</th>
+                <th>Nome</th>
+                <th>Data Violazione</th>
+                <th>Punti Decurtati</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var v in Model.VerbaliHighImporto)
+            {
+                <tr>
+                    <td>@v.Importo</td>
+                    <td>@v.Trasgressore.Cognome</td>
+                    <td>@v.Trasgressore.Nome</td>
+                    <td>@v.DataViolazione.ToShortDateString()</td>
+                    <td>@v.PuntiDecurtati</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<a class="btn btn-secondary" href="@Url.Action("Index", "Home")">Torna a Home</a>
