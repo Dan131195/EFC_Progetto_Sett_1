@@ -1,4 +1,4 @@
-namespace EFC_Progetto_Sett_1.Models
+namespace EFC_Progetto_Sett_1.ViewModels
 {
     public class ErrorViewModel
     {
