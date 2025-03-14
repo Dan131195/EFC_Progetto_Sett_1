@@ -24,7 +24,7 @@
         <input asp-for="Telefono" class="form-control" />
     </div>
     <button type="submit" class="btn btn-primary">Salva</button>
-    <a class="btn btn-secondary" href="@Url.Action("Index", "Home")">Home</a>
+    <a class="btn btn-secondary" asp-controller="Home" asp-action="Index">Home</a>
 </form>
 
 
