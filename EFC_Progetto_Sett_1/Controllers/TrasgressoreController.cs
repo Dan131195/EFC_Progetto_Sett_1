@@ -18,8 +18,8 @@ namespace EFC_Progetto_Sett_1.Controllers
 
         public IActionResult Index()
         {
-            var trasgressori = _trasgressoreService.GetAllTrasgressori(); // Recupera i trasgressori dal servizio
-            return View(trasgressori); // Passa la lista alla vista
+            var trasgressori = _trasgressoreService.GetAllTrasgressori(); 
+            return View(trasgressori);
         }
 
         public IActionResult Create()
@@ -41,8 +41,8 @@ namespace EFC_Progetto_Sett_1.Controllers
                     DataRegistrazione = DateTime.Now
                 };
 
-                _trasgressoreService.AddTrasgressore(trasgressore); // Usa il servizio per aggiungere il trasgressore
-                return RedirectToAction("Index"); // Torna alla lista
+                _trasgressoreService.AddTrasgressore(trasgressore);
+                return RedirectToAction("Index"); 
             }
             return View(model);
         }

@@ -32,7 +32,6 @@ namespace EFC_Progetto_Sett_1.Services
                            .ToList();
         }
 
-        // Restituisce statistiche raggruppate per trasgressore: numero di verbali e somma dei punti decurtati
         public Dictionary<int, (int Count, int TotalPoints)> GetStatisticheVerbaliPerTrasgressore()
         {
             return _context.Verbali
@@ -41,7 +40,6 @@ namespace EFC_Progetto_Sett_1.Services
                            .ToDictionary(x => x.TrasgressoreId, x => (x.Count, x.TotalPoints));
         }
 
-        // Filtra i verbali relativi a violazioni con punti decurtati superiori a 10
         public List<Verbale> GetVerbaliWithHighPoints()
         {
             return _context.Verbali
@@ -50,7 +48,6 @@ namespace EFC_Progetto_Sett_1.Services
                            .ToList();
         }
 
-        // Filtra i verbali relativi a violazioni con importo maggiore di 400 euro
         public List<Verbale> GetVerbaliWithHighImporto()
         {
             return _context.Verbali
